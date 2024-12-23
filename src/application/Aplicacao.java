@@ -6,8 +6,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import entities.Agenda;
-import entities.Pessoa;
-import entities.Telefone;
+import service.Filtro;
 
 public class Aplicacao {
 
@@ -41,39 +40,22 @@ public class Aplicacao {
 			}
 
 			if (op == 2) {
-				System.out.println("Adicionar novo Contato: ");
-				System.out.print("Nome: ");
-				String nome = sc.next();
-				nome = nome.toUpperCase().charAt(0) + nome.substring(1);
-				System.out.print("Idade: ");
-				int idade = sc.nextInt();
-				System.out.print("DDD: ");
-				int DDD = sc.nextInt();
-				System.out.print("Numero Tel: ");
-				String numeroTel = sc.next();
+				agenda.add(menu.agendar());
 
-				Pessoa p = new Pessoa(nome, idade);
-				Telefone t = new Telefone(DDD, numeroTel);
-
-				Agenda ag = new Agenda(p, t);
-				agenda.add(ag);
-
-				System.out.println("Contato cadastrado com sucesso!");
-				System.out.println(menu.menu());
+				menu.menu();
 				op = sc.nextInt();
+
 			}
 
 			if (op == 3) {
-				System.out.println("Qual letra deseja filtrar: ");
-				String letra = sc.next();
 
 				List<Agenda> agendaFiltrada = new ArrayList<>();
-
 				for (Agenda a : agenda) {
 					agendaFiltrada.add(a);
 				}
 
-				agendaFiltrada.removeIf(p -> p.getPessoa().getNome().toUpperCase().charAt(0) != letra.toUpperCase().charAt(0));
+				agendaFiltrada.removeIf(new Filtro());
+
 				agendaFiltrada.sort((p1, p2) -> p1.getPessoa().getNome().toUpperCase()
 						.compareTo(p2.getPessoa().getNome().toUpperCase()));
 				agendaFiltrada.forEach(System.out::println);
