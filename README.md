@@ -6,6 +6,9 @@ Inicialmente é mais para exercitar a lógica de progrmação e ir alterando e t
 
 As metas até então são:
 
+
 Polimento do código;
+
 Integração com banco de dados PostgreSQL;
+
 Funcionalidades adicionais;
