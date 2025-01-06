@@ -20,6 +20,7 @@ public class Aplicacao {
 		System.out.println(menu.menu());
 
 		int op = sc.nextInt();
+
 		while (op != 6) {
 
 			if (op == 1) {
@@ -42,7 +43,7 @@ public class Aplicacao {
 			if (op == 2) {
 				agenda.add(menu.agendar());
 
-				menu.menu();
+				System.out.println(menu.menu());
 				op = sc.nextInt();
 
 			}
@@ -65,6 +66,7 @@ public class Aplicacao {
 			}
 
 		}
+		System.out.print("Operação encerrada pelo operador!");
 
 		sc.close();
 	}
