@@ -5,19 +5,18 @@ import java.util.function.Predicate;
 
 import entities.Agenda;
 
-public class Filtro implements Predicate <Agenda> {
+public class FiltroPredicate implements Predicate<Agenda> {
 
 	public String letra() {
-		
+
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Qual letra deseja filtrar: ");
-		String l = sc.next();
-		sc.close();
-		return l;
-		
+		String lt = sc.next();
+	
+		return lt;
+
 	}
-	
-	
+
 	@Override
 	public boolean test(Agenda a) {
 

@@ -6,7 +6,8 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import entities.Agenda;
-import service.Filtro;
+import service.FiltroComparator;
+import service.FiltroPredicate;
 
 public class Aplicacao {
 
@@ -55,10 +56,11 @@ public class Aplicacao {
 					agendaFiltrada.add(a);
 				}
 
-				agendaFiltrada.removeIf(new Filtro());
+				agendaFiltrada.removeIf(new FiltroPredicate());
 
 				agendaFiltrada.sort((p1, p2) -> p1.getPessoa().getNome().toUpperCase()
 						.compareTo(p2.getPessoa().getNome().toUpperCase()));
+				
 				agendaFiltrada.forEach(System.out::println);
 
 				System.out.println(menu.menu());
