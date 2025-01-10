@@ -6,7 +6,6 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import entities.Agenda;
-import service.FiltroComparator;
 import service.FiltroPredicate;
 
 public class Aplicacao {
@@ -55,11 +54,11 @@ public class Aplicacao {
 				for (Agenda a : agenda) {
 					agendaFiltrada.add(a);
 				}
-
-				agendaFiltrada.removeIf(new FiltroPredicate());
-
-				agendaFiltrada.sort((p1, p2) -> p1.getPessoa().getNome().toUpperCase()
-						.compareTo(p2.getPessoa().getNome().toUpperCase()));
+				
+				System.out.println("Qual letra deseja filtrar: ");
+				String letra = sc.next();
+				
+				agendaFiltrada.removeIf(new FiltroPredicate(letra));
 				
 				agendaFiltrada.forEach(System.out::println);
 
