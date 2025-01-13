@@ -6,6 +6,9 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import entities.Agenda;
+import entities.Pessoa;
+import entities.Telefone;
+import service.FiltroComparator;
 import service.FiltroPredicate;
 
 public class Aplicacao {
@@ -31,8 +34,7 @@ public class Aplicacao {
 
 				} else {
 
-					agenda.sort((p1, p2) -> p1.getPessoa().getNome().toUpperCase()
-							.compareTo(p2.getPessoa().getNome().toUpperCase()));
+					agenda.sort(new FiltroComparator());
 					agenda.forEach(System.out::println);
 
 					System.out.println(menu.menu());
@@ -41,8 +43,28 @@ public class Aplicacao {
 			}
 
 			if (op == 2) {
-				agenda.add(menu.agendar());
+				
+				System.out.println("Adicionar novo Contato: ");
 
+				System.out.print("Nome: ");
+				String nome = sc.next();
+				nome = nome.toUpperCase().charAt(0) + nome.substring(1);
+
+				System.out.print("Idade: ");
+				int idade = sc.nextInt();
+
+				System.out.print("DDD: ");
+				int DDD = sc.nextInt();
+
+				System.out.print("Numero Tel: ");
+				String numeroTel = sc.next();
+				
+				Pessoa p = new Pessoa(nome, idade);
+				Telefone t = new Telefone(DDD, numeroTel);
+				
+				agenda.add(new Agenda(p,t));
+				System.out.println("Contato cadastrado com sucesso!");
+				
 				System.out.println(menu.menu());
 				op = sc.nextInt();
 
@@ -59,7 +81,7 @@ public class Aplicacao {
 				String letra = sc.next();
 				
 				agendaFiltrada.removeIf(new FiltroPredicate(letra));
-				
+				agendaFiltrada.sort(new FiltroComparator());
 				agendaFiltrada.forEach(System.out::println);
 
 				System.out.println(menu.menu());

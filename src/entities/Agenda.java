@@ -34,34 +34,6 @@ public class Agenda {
 		this.pessoa = pessoa;
 	}
 
-	public Agenda agendar() {
-		System.out.println("Adicionar novo Contato: ");
-
-		System.out.print("Nome: ");
-		String nome = sc.next();
-		nome = nome.toUpperCase().charAt(0) + nome.substring(1);
-
-		System.out.print("Idade: ");
-		int idade = sc.nextInt();
-
-		System.out.print("DDD: ");
-		int DDD = sc.nextInt();
-
-		System.out.print("Numero Tel: ");
-		String numeroTel = sc.next();
-
-		Pessoa p = new Pessoa(nome, idade);
-		Telefone t = new Telefone(DDD, numeroTel);
-		Agenda a = new Agenda(p, t);
-		
-		System.out.println("Contato cadastrado com sucesso!");
-		
-		return a;
-	}
-	
-	public void filtrar() {
-		
-	}
 
 	public String menu() {
 		return "\nMenu: " + "\n1-lista de numeros." + "\n2-adicionar novo contato."
