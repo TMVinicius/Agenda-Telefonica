@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.Objects;
+
 public class Telefone {
 
 	private int DDD;
@@ -30,4 +32,23 @@ public class Telefone {
 		this.numeroCel = numeroCel;
 	}
 
+	@Override
+	public int hashCode() {
+		return Objects.hash(numeroCel);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Telefone other = (Telefone) obj;
+		return Objects.equals(numeroCel, other.numeroCel);
+	}
+
+	
+	
 }

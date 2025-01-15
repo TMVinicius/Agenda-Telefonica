@@ -43,7 +43,7 @@ public class Aplicacao {
 			}
 
 			if (op == 2) {
-				
+
 				System.out.println("Adicionar novo Contato: ");
 
 				System.out.print("Nome: ");
@@ -58,13 +58,21 @@ public class Aplicacao {
 
 				System.out.print("Numero Tel: ");
 				String numeroTel = sc.next();
-				
+
 				Pessoa p = new Pessoa(nome, idade);
 				Telefone t = new Telefone(DDD, numeroTel);
-				
-				agenda.add(new Agenda(p,t));
-				System.out.println("Contato cadastrado com sucesso!");
-				
+
+				if (agenda.size() != 0) {
+					for (Agenda a : agenda) {
+						if (numeroTel.equals(a.getTelefone().getNumeroCel())) {
+							System.out.println("Telefone já cadastrado na base de dados!");
+						}
+					}
+				} else {
+					agenda.add(new Agenda(p, t));
+					System.out.println("Contato cadastrado com sucesso!");
+				}
+
 				System.out.println(menu.menu());
 				op = sc.nextInt();
 
@@ -76,10 +84,10 @@ public class Aplicacao {
 				for (Agenda a : agenda) {
 					agendaFiltrada.add(a);
 				}
-				
+
 				System.out.println("Qual letra deseja filtrar: ");
 				String letra = sc.next();
-				
+
 				agendaFiltrada.removeIf(new FiltroPredicate(letra));
 				agendaFiltrada.sort(new FiltroComparator());
 				agendaFiltrada.forEach(System.out::println);

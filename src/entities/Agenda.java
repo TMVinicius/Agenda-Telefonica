@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Agenda {
@@ -46,5 +47,24 @@ public class Agenda {
 				+ telefone.getNumeroCel().charAt(0) + " " + telefone.getNumeroCel().substring(1, 5) + "-"
 				+ telefone.getNumeroCel().substring(5);
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(telefone);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Agenda other = (Agenda) obj;
+		return Objects.equals(telefone, other.telefone);
+	}
+	
+	
 
 }
